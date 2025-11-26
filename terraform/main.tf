@@ -11,6 +11,7 @@ terraform {
 
 provider "azurerm" {
   features {}
+  subscription_id = "e37f0453-2f96-4df5-a817-844232ac0687"
 }
 
 # Resource Group
@@ -37,7 +38,7 @@ resource "azurerm_storage_account" "storage" {
   account_replication_type = "LRS"
 }
 
-# Function App (Linux) com Python 3.10 e Always On
+# Function App (Linux) com Python 3.9 e Always On
 resource "azurerm_linux_function_app" "function_app" {
   name                       = "senaclabazurefunction"
   resource_group_name        = azurerm_resource_group.rg.name
@@ -49,7 +50,7 @@ resource "azurerm_linux_function_app" "function_app" {
   site_config {
     always_on = true
     application_stack {
-      python_version = "3.10"
+      python_version = "3.9"
     }
   }
 }
